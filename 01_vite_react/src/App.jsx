@@ -1,5 +1,4 @@
-
-import Chai from "./chai"
+import Counter from "./miniprojects/counter"
 
 function App() {
 
@@ -10,8 +9,7 @@ function App() {
 
 
     <>
-    <Chai/>
-    <h1>hello Vite</h1>
+    <Counter/>
     </>
   )
 }
