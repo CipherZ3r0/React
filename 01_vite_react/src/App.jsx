@@ -1,4 +1,5 @@
-import Counter from "./miniprojects/counter"
+// import Counter from "./miniprojects/counter";
+import BgColorChange from "./miniprojects/bgColorChange";
 
 function App() {
 
@@ -9,9 +10,11 @@ function App() {
 
 
     <>
-    <Counter/>
+    {/* <Counter/> */}
+    <BgColorChange/>
     </>
   )
 }
 
 export default App
+

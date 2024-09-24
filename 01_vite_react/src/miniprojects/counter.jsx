@@ -5,7 +5,7 @@ import { useState } from "react";
 function Counter () {
 
 
-    let [Counter , setCounter ] = useState(10)
+    let [Counter , setCounter ] = useState(5)
 
 
     // let counter = 10;
@@ -23,13 +23,15 @@ function Counter () {
 
     return(
 
-        <>
-        <h1>Counter app</h1>
+        <div className="bg-slate-400 w-full h-screen">
+
+        <h1 className="">Counter app</h1>
         <h3>Counter: {Counter}</h3>
 
         <button onClick={addValue}>Add</button>
         <button onClick={sub_value}>substrection</button>
-        </>
+
+        </div>
     )
 }
 
