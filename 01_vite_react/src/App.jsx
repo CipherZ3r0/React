@@ -1,6 +1,6 @@
 // import Counter from "./miniprojects/counter";
-import BgColorChange from "./miniprojects/bgColorChange";
-
+// import BgColorChange from "./miniprojects/bgColorChange";
+import PasswordGenerate from "./miniprojects/passwordGenerate"
 function App() {
 
   return (
@@ -11,7 +11,8 @@ function App() {
 
     <>
     {/* <Counter/> */}
-    <BgColorChange/>
+    {/* <BgColorChange/> */}
+    <PasswordGenerate/>
     </>
   )
 }
