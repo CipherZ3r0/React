@@ -58,6 +58,7 @@ const PatientProfile = () => {
     observations: "",
     followUpDate: "",
   });
+  const [showForm, setShowForm] = useState(false); // New state to toggle the form visibility
 
   // Function to handle form submission for adding a new visit
   const handleAddVisit = (e) => {
@@ -71,6 +72,7 @@ const PatientProfile = () => {
       observations: "",
       followUpDate: "",
     });
+    setShowForm(false); // Hide the form after submission
   };
 
   return (
@@ -99,7 +101,7 @@ const PatientProfile = () => {
               <span className="font-semibold">{item.condition}</span>
               {item.startDate && (
                 <span className="text-sm text-gray-600 ml-2">
-                  (From: {new Date(item.startDate).toLocaleDateString()})
+                  (From: {new Date(item.startDate).toLocaleDateString()} )
                 </span>
               )}
               {item.endDate && (
@@ -154,76 +156,100 @@ const PatientProfile = () => {
         </div>
       )}
 
+      <br/>
+
+      {/* Button to toggle "Add New Visit" form */}
+      <button
+        onClick={() => setShowForm(!showForm)}
+        className="mt-6 p-2 bg-blue-600 text-white rounded"
+      >
+        {showForm ? "Cancel" : "Add New Visit"}
+      </button>
+
       {/* Add New Visit Form */}
-      <div className="mt-8">
-        <h3 className="text-xl font-semibold mb-4">Add New Visit</h3>
-        <form onSubmit={handleAddVisit} className="space-y-4">
-          <div>
-            <label className="block">Visit Date</label>
-            <input
-              type="datetime-local"
-              value={newVisit.visitDate}
-              onChange={(e) => setNewVisit({ ...newVisit, visitDate: e.target.value })}
-              className="p-2 border border-gray-300 w-full"
-              required
-            />
-          </div>
+      {showForm && (
+        <div className="mt-8">
+          <h3 className="text-xl font-semibold mb-4">Add New Visit</h3>
+          <form onSubmit={handleAddVisit} className="space-y-4">
+            <div>
+              <label className="block">Visit Date</label>
+              <input
+                type="datetime-local"
+                value={newVisit.visitDate}
+                onChange={(e) =>
+                  setNewVisit({ ...newVisit, visitDate: e.target.value })
+                }
+                className="p-2 border border-gray-300 w-full"
+                required
+              />
+            </div>
 
-          <div>
-            <label className="block">Symptoms</label>
-            <textarea
-              value={newVisit.symptoms}
-              onChange={(e) => setNewVisit({ ...newVisit, symptoms: e.target.value })}
-              className="p-2 border border-gray-300 w-full"
-              required
-            ></textarea>
-          </div>
+            <div>
+              <label className="block">Symptoms</label>
+              <textarea
+                value={newVisit.symptoms}
+                onChange={(e) =>
+                  setNewVisit({ ...newVisit, symptoms: e.target.value })
+                }
+                className="p-2 border border-gray-300 w-full"
+                required
+              ></textarea>
+            </div>
 
-          <div>
-            <label className="block">Diagnosis</label>
-            <textarea
-              value={newVisit.diagnosis}
-              onChange={(e) => setNewVisit({ ...newVisit, diagnosis: e.target.value })}
-              className="p-2 border border-gray-300 w-full"
-              required
-            ></textarea>
-          </div>
+            <div>
+              <label className="block">Diagnosis</label>
+              <textarea
+                value={newVisit.diagnosis}
+                onChange={(e) =>
+                  setNewVisit({ ...newVisit, diagnosis: e.target.value })
+                }
+                className="p-2 border border-gray-300 w-full"
+                required
+              ></textarea>
+            </div>
 
-          <div>
-            <label className="block">Prescribed Medicines</label>
-            <textarea
-              value={newVisit.prescribedMedicines}
-              onChange={(e) => setNewVisit({ ...newVisit, prescribedMedicines: e.target.value })}
-              className="p-2 border border-gray-300 w-full"
-              required
-            ></textarea>
-          </div>
+            <div>
+              <label className="block">Prescribed Medicines</label>
+              <textarea
+                value={newVisit.prescribedMedicines}
+                onChange={(e) =>
+                  setNewVisit({ ...newVisit, prescribedMedicines: e.target.value })
+                }
+                className="p-2 border border-gray-300 w-full"
+                required
+              ></textarea>
+            </div>
 
-          <div>
-            <label className="block">Observations</label>
-            <textarea
-              value={newVisit.observations}
-              onChange={(e) => setNewVisit({ ...newVisit, observations: e.target.value })}
-              className="p-2 border border-gray-300 w-full"
-              required
-            ></textarea>
-          </div>
+            <div>
+              <label className="block">Observations</label>
+              <textarea
+                value={newVisit.observations}
+                onChange={(e) =>
+                  setNewVisit({ ...newVisit, observations: e.target.value })
+                }
+                className="p-2 border border-gray-300 w-full"
+                required
+              ></textarea>
+            </div>
 
-          <div>
-            <label className="block">Follow-up Date</label>
-            <input
-              type="date"
-              value={newVisit.followUpDate}
-              onChange={(e) => setNewVisit({ ...newVisit, followUpDate: e.target.value })}
-              className="p-2 border border-gray-300 w-full"
-            />
-          </div>
+            <div>
+              <label className="block">Follow-up Date</label>
+              <input
+                type="date"
+                value={newVisit.followUpDate}
+                onChange={(e) =>
+                  setNewVisit({ ...newVisit, followUpDate: e.target.value })
+                }
+                className="p-2 border border-gray-300 w-full"
+              />
+            </div>
 
-          <button type="submit" className="mt-4 p-2 bg-blue-600 text-white rounded">
-            Add Visit
-          </button>
-        </form>
-      </div>
+            <button type="submit" className="mt-4 p-2 bg-blue-600 text-white rounded">
+              Add Visit
+            </button>
+          </form>
+        </div>
+      )}
     </div>
   );
 };
